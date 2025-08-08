@@ -1,0 +1,27 @@
+services.AddSingleton<IMyService, MyService>();  // برای کانفیگ یا کش مناسب است
+services.AddScoped<IMyService, MyService>();     // برای سرویس‌های وابسته به کاربر
+services.AddTransient<IMyService, MyService>();  // برای استفاده‌های کوتاه‌مدت
+-------------------------
+Middlewareها در ASP.NET Core اجزایی هستند که درخواست‌های HTTP را در pipeline دریافت، پردازش و به مرحله بعدی ارسال می‌کنند. هر middleware می‌تواند:
+درخواست را پردازش کند.
+تصمیم بگیرد که آیا درخواست به middleware بعدی ارسال شود یا نه.
+پاسخ را اصلاح کند.
+----------------------------
+Mediator یک الگو (Pattern) برای کاهش وابستگی مستقیم بین اجزا است. در ASP.NET Core، کتابخانه‌ای مانند MediatR برای پیاده‌سازی آن استفاده می‌شود.
+مزایا:
+جداسازی لایه‌ها
+افزایش تست‌پذیری
+کاهش پیچیدگی در ارتباط بین Handlerها و Controllerها
+مثال:
+csharp
+Copy
+Edit
+public record GetUserQuery(int Id) : IRequest<User>;
+public class GetUserHandler : IRequestHandler<GetUserQuery, User>
+{
+    public Task<User> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    {
+        return GetUserFromDb(request.Id);
+    }
+}
+-------------------------
