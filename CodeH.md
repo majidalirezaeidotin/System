@@ -25,3 +25,5 @@ public class GetUserHandler : IRequestHandler<GetUserQuery, User>
     }
 }
 -------------------------
+<img width="785" height="504" alt="image" src="https://github.com/user-attachments/assets/aaba2bcd-dd0e-4289-840c-a2b2c9b9ab15" />
+
