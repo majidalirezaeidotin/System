@@ -140,6 +140,32 @@ app.MapWhen(ctx => ctx.Request.Query.ContainsKey("debug"), appBuilder =>
 پشتیبانی از with-expression برای ساخت نسخه‌های تغییر یافته
 public record User(string Name, int Age);        
 -------------------------------------------------
+تفاوت IEnumerable، IQueryable و List در C# چیست؟
+
+IEnumerable: اجرای Lazy، فقط در حافظه محلی پیمایش می‌کند، مناسب برای مجموعه‌های کوچک یا داده‌های درون حافظه.
+
+IQueryable: اجرای Deferred، کوئری را به منبع داده (مثل دیتابیس) منتقل می‌کند و قبل از اجرا قابل بهینه‌سازی است.
+
+List: یک پیاده‌سازی خاص از IEnumerable که داده را در حافظه ذخیره می‌کند و می‌توان آن را تغییر داد.
+--------------------------------------------
+در ASP.NET Core مفهوم Endpoint Routing چیست؟
+پاسخ:
+سیستمی که از نسخه 3.0 اضافه شد و مسیرها را قبل از اجرای Middlewareها تعیین می‌کند. این کار باعث بهبود کارایی و انعطاف بیشتر در نگاشت مسیرها می‌شود.
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});   
+-----------------------------------------
+تفاوت بین ConfigureServices و Configure در ASP.NET Core چیست؟
+
+ConfigureServices: برای ثبت سرویس‌ها در DI Container استفاده می‌شود.
+Configure: برای تنظیم Pipeline برنامه و ثبت Middlewareها استفاده می‌شود.
+------------------------------------
+در ASP.NET Core چگونه می‌توان Exception Handling Global ایجاد کرد؟
+با استفاده از Middleware:
+app.UseExceptionHandler("/Error");        
+
 
         
     </pre>
