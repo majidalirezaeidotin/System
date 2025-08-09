@@ -1,5 +1,5 @@
 <pre>
-<div align="right">
+<div dir="rtl" align="right">
 services.AddSingleton<IMyService, MyService>();  // برای کانفیگ یا کش مناسب است
 services.AddScoped<IMyService, MyService>();     // برای سرویس‌های وابسته به کاربر
 services.AddTransient<IMyService, MyService>();  // برای استفاده‌های کوتاه‌مدت
@@ -58,7 +58,15 @@ services.AddAuthorization(options =>
 });
 
 [Authorize(Policy = "IsManager")]
-        
+---------------------------------------------
+
+تفاوت بین IHostedService و BackgroundService در ASP.NET Core چیست؟
+پاسخ:
+
+IHostedService: یک اینترفیس ساده است که متدهای StartAsync و StopAsync دارد و باید به‌صورت کامل پیاده‌سازی شود.
+
+BackgroundService: یک کلاس انتزاعی است که IHostedService را پیاده‌سازی کرده و متد ExecuteAsync را برای اجرای حلقه اصلی کارها فراهم می‌کند.
+📌 نکته: اگر کار طولانی‌مدت و تکراری داریم، BackgroundService ساده‌تر و خواناتر است.        
 
     </pre>
     </div>
